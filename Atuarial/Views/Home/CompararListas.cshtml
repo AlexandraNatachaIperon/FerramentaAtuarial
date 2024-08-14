@@ -1,0 +1,91 @@
+﻿@{
+    var servidoresComum = ViewBag.ServidoresComum as List<AtuarialLista>;
+    var servidoresAtuarial = ViewBag.ServidoresAtuarial as List<AtuarialLista>;
+    var servidoresReferencia = ViewBag.ServidoresReferencia as List<AtuarialLista>;
+}
+<button class="btn btn-sm btn-group mb-5" onclick="history.back()">Voltar</button>
+<div class="container pb-5">
+    <h3>SERVIDORES EM COMUM</h3>
+     <div class="text-xl-end">
+        <button class="btn btn-sm btn-group btn-outline-dark" onclick="exportTableToExcel('servidores_comum.xlsx', '#tableComum')">Baixar Excel</button>
+    </div>
+    <table id="tableComum" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Matrícula</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var servidor in servidoresComum)
+            {
+                <tr class="table-light">
+                    <th scope="row">@servidor.Nome</th>
+                    <td>@servidor.Cpf</td>
+                    <td>@servidor.Matricula</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="container pb-5">
+    <h3 >A MAIS</h3>
+    <div class="text-xl-end">
+        <button class="btn btn-sm btn-group btn-outline-dark" onclick="exportTableToExcel('servidores_atuarial.xlsx', '#tableAtuarial')">Baixar Excel</button>
+    </div>
+
+    <table id="tableAtuarial" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Matrícula</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var servidor in servidoresAtuarial)
+            {
+                <tr class="table-light">
+                    <th scope="row">@servidor.Nome</th>
+                    <td>@servidor.Cpf</td>
+                    <td>@servidor.Matricula</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="container pb-5">
+        <h3 >A MENOS</h3>
+        <div class="text-xl-end">
+            <button class="btn btn-sm btn-group btn-outline-dark" onclick="exportTableToExcel('servidores_referencia.xlsx', '#tableReferencia')">Baixar Excel</button>
+        </div>
+    
+    <table id="tableReferencia" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Matrícula</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var servidor in servidoresReferencia)
+            {
+                <tr class="table-light">
+                    <th scope="row">@servidor.Nome</th>
+                    <td>@servidor.Cpf</td>
+                    <td>@servidor.Matricula</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="~/js/exportarxls.js"></script>
+}
+
